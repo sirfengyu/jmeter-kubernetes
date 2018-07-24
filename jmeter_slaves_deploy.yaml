@@ -16,7 +16,15 @@ spec:
     spec:
       containers:
       - name: jmslave
-        image: kubernautslabs/jmeter_slave
+        image: sirfengyu/jmeter-slave
+        command: ["/jmeter/apache-jmeter-3.3/bin/jmeter-server"]
+        args: ["-Djava.rmi.server.hostname=$(MY_POD_IP)", "-Dserver.rmi.localport=50000", "-Dserver_port=1099"]
         ports:
         - containerPort: 1099
         - containerPort: 50000
+        env:
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+        
