@@ -1,21 +1,15 @@
-pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Build'
-      }
+node {  
+    stage('Build') { 
+        // 编译
+        steps.echo "Scripted Pipeline:Build"
     }
-    stage('Test') {
-      steps {
-        echo 'Test'
-      }
+    stage('Test') { 
+        // 测试 
+        steps.echo "Scripted Pipeline:Test"
+
     }
-    stage('Deploy') {
-      steps {
-        echo 'Deploy'
-        sh 'pwd'
-      }
+    stage('Deploy') { 
+        // 部署 
+        steps.echo "Scripted Pipeline:Deploy"
     }
-  }
 }
