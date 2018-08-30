@@ -1,15 +1,26 @@
-node {  
-    stage('Build') { 
-        // 编译
-        steps.echo "Scripted Pipeline:Build"
-    }
-    stage('Test') { 
-        // 测试 
-        steps.echo "Scripted Pipeline:Test"
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                // 编译
+                echo "Declarative Pipeline:Build"
+            }
+        }
+        stage('Test') {
 
-    }
-    stage('Deploy') { 
-        // 部署 
-        steps.echo "Scripted Pipeline:Deploy"
+            steps {
+                // 测试
+                echo "Declarative Pipeline:Test"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // 部署
+                echo "Declarative Pipeline:Deploy"
+            }
+
+
+        }
     }
 }
